@@ -4,6 +4,14 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.0"
 
+    signingConfigs {
+        release {
+            storeFile file("GeographicCollection.keystore")
+            storePassword "894924815"
+            keyAlias "android.keystore"
+            keyPassword "894924815"
+        }
+    }
     defaultConfig {
         applicationId "org.aki.geographiccollection"
         minSdkVersion 19
@@ -15,16 +23,28 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.release
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+            assets.srcDirs = ['src/main/assets', 'src/main/assets/']
         }
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.1'
     compile 'com.android.support:design:23.2.1'
     compile 'in.srain.cube:ultra-ptr:1.0.11'
+    compile 'io.reactivex:rxjava:1.0.14'
+    compile 'io.reactivex:rxandroid:1.0.1'
     compile 'jp.wasabeef:recyclerview-animators:2.2.1'
     compile files('libs/AMap2DMap_2.9.0_AMapSearch_3.4.0_AMapLocation_2.8.0_20160811.jar')
 }
