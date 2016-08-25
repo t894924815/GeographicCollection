@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">定位sdk Demo</string>
+    <string name="app_name">Geographic Collection</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="startlocation">开始定位</string>
@@ -35,5 +35,6 @@
 		4）具体描述：细节描述，可以给出问题发生的频率或者APP名称，sdk版本等，也可以加上附件如日志，贴图等\n
         </string>
     <string name="qa_callback_mail">反馈邮箱:loc-bugs@baidu.com</string>
+    <string name="confirm">确定退出?</string>
 
 </resources>

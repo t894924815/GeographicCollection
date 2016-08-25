@@ -9,8 +9,6 @@ import android.support.v4.util.ArrayMap;
 import com.baidu.mapapi.SDKInitializer;
 
 
-import org.aki.geographiccollection.client.test.LocationService;
-
 import java.util.ArrayList;
 
 /**

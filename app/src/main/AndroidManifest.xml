@@ -7,31 +7,30 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
 
-
     <!--地图包、搜索包需要的基础权限-->
 
-    <!--<uses-permission android:name="android.permission.INTERNET" />-->
-    <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
-    <!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
-    <!--<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />-->
-    <!--<uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
-    <!--<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <!--定位包、导航包需要的额外权限（注：基础权限也需要）-->
-    <!--<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />-->
-    <!--<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <!--<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />-->
-    <!--<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />-->
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.GET_TASKS" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
+    <!--<uses-permission android:name="android.permission.INTERNET" />-->
+    <!--<uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />-->
+    <!--<uses-permission android:name="android.permission.WAKE_LOCK" />-->
+    <!--<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />-->
+    <!--<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />-->
+    <!--<uses-permission android:name="android.permission.GET_TASKS" />-->
+    <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
+    <!--<uses-permission android:name="android.permission.WRITE_SETTINGS" />-->
 
 
     <application
@@ -39,14 +38,14 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
         android:largeHeap="true"
+        android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
         <!--高德地图开发者key-->
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="a681c5f5c043a7d974a3a51fcde6c5a8"/>
+            android:value="a681c5f5c043a7d974a3a51fcde6c5a8" />
 
         <!--百度地图开发者key-->
         <meta-data
@@ -54,21 +53,22 @@
             android:value="9dPvPlswupxyS2gshyy2BYYScnxYQU9N" />
 
 
-        <activity android:name=".client.test.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".client.test.IndoorLocationActivity"/>
-        <activity android:name=".client.test.LocationActivity"/>
-        <activity android:name=".client.test.LocationAutoNotify"/>
-        <activity android:name=".client.test.LocationFilter"/>
-        <activity android:name=".client.test.NotifyActivity"/>
-        <activity android:name=".client.test.QuestActivity"/>
-        <activity android:name=".client.test.LocationOption"/>
+        <!--<activity android:name=".client.test.IndoorLocationActivity" />-->
+        <!--<activity android:name=".client.test.LocationActivity" />-->
+        <!--<activity android:name=".client.test.LocationAutoNotify" />-->
+        <!--<activity android:name=".client.test.LocationFilter" />-->
+        <!--<activity android:name=".client.test.NotifyActivity" />-->
+        <!--<activity android:name=".client.test.QuestActivity" />-->
+        <!--<activity android:name=".client.test.LocationOption" />-->
+        <service android:name="com.amap.api.location.APSService" />
+        <!--<service-->
+            <!--android:name="com.baidu.location.f"-->
+            <!--android:enabled="true"-->
+            <!--android:process=":remote">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="com.baidu.location.service_v2.2"/>-->
+            <!--</intent-filter>-->
+        <!--</service>-->
     </application>
 
 </manifest>

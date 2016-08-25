@@ -27,7 +27,7 @@ import com.amap.api.services.busline.BusStationResult;
 import com.amap.api.services.busline.BusStationSearch;
 
 import org.aki.geographiccollection.R;
-import org.aki.geographiccollection.client.ui.adapter.MyBusLineAdapter;
+import org.aki.geographiccollection.client.view.ui.adapter.MyBusLineAdapter;
 
 import java.util.List;
 
