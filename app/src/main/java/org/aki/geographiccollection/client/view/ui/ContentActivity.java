@@ -4,13 +4,18 @@ package org.aki.geographiccollection.client.view.ui;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.view.MotionEvent;
+import android.view.View;
 
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.Overlay;
 import com.baidu.mapapi.model.LatLng;
 
+import org.aki.geographiccollection.R;
 import org.aki.geographiccollection.client.bean.WitchFragment;
+import org.aki.geographiccollection.client.presenter.MainPresenter;
 import org.aki.geographiccollection.client.presenter.MapPresenter;
 import org.aki.geographiccollection.client.presenter.UIPresenter;
 import org.aki.geographiccollection.client.view.IMapOperator;
@@ -23,12 +28,11 @@ import org.aki.geographiccollection.client.view.ui.fragment.MessageFragment;
  */
 public class ContentActivity extends BaseActivity implements IUiOperator, IMapOperator {
 
-    public CollectionFragment collectionFragment;
-    public MessageFragment messageFragment;
     private FragmentManager fragmentManager;
 
-    public UIPresenter uiPresenter;
-    public MapPresenter mapContentPresenter;
+    private MainPresenter mainPresenter;
+    private UIPresenter uiPresenter;
+    private MapPresenter mapContentPresenter;
 
     @Override
     public void onContentChanged() {
@@ -36,16 +40,59 @@ public class ContentActivity extends BaseActivity implements IUiOperator, IMapOp
         initData();
     }
 
-    private void initData(){
+    private void initData() {
+        mainPresenter = new MainPresenter(this);
         uiPresenter = new UIPresenter(this);
         mapContentPresenter = new MapPresenter(this);
 
-        collectionFragment = new CollectionFragment();
-        messageFragment = new MessageFragment();
         fragmentManager = getSupportFragmentManager();
-        uiPresenter
+        uiPresenter.showFragment(WitchFragment.COLLECTION);
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+
+    public View.OnClickListener onClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.tv_collect:
+                    uiPresenter.startPoint();
+                    break;
+            }
+        }
+    };
+
+    public View.OnTouchListener onTouchListener = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+            switch (motionEvent.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    uiPresenter.moveView(view, motionEvent);
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    uiPresenter.moveView(view, motionEvent);
+                    break;
+                case MotionEvent.ACTION_UP:
+                    break;
+            }
+            return false;
+        }
+    };
 
     @Override
     public void showMapType() {
@@ -63,12 +110,39 @@ public class ContentActivity extends BaseActivity implements IUiOperator, IMapOp
     }
 
     @Override
-    public void toFragment(Enum e) {
-        if(e == WitchFragment.MESSAGE){
-            if(null != messageFragment && !messageFragment.isAdded()){
-                fragmentManager.beginTransaction().add(android.R.id.content,messageFragment).commitAllowingStateLoss();
-            }
-        }
+    public void addFragment(Fragment fragment) {
+        fragmentManager.beginTransaction().add(android.R.id.content, fragment).commitAllowingStateLoss();
+    }
+
+    @Override
+    public void showFragment(Fragment fragment) {
+        fragmentManager.beginTransaction().show(fragment).commitAllowingStateLoss();
+    }
+
+    @Override
+    public void hideFragment(Fragment fragment) {
+
+    }
+
+
+    @Override
+    public void showAimTarget() {
+
+    }
+
+    @Override
+    public void hideAimTarget() {
+
+    }
+
+    @Override
+    public void moveAimTarget(int x, int y) {
+
+    }
+
+    @Override
+    public void hideCollectView() {
+
     }
 
     @Override

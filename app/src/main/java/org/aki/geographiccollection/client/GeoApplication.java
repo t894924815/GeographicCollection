@@ -18,8 +18,6 @@ public class GeoApplication extends Application implements Application.ActivityL
     public static ArrayMap<String, String> params;
     public static GeoApplication application;
     public ArrayList<Activity> activities;
-    public LocationService locationService;
-    public Vibrator mVibrator;
 
     @Override
     public void onCreate() {
@@ -27,8 +25,6 @@ public class GeoApplication extends Application implements Application.ActivityL
         application = this;
         params = new ArrayMap<>();
 
-        locationService = new LocationService(getApplicationContext());
-        mVibrator =(Vibrator)getApplicationContext().getSystemService(Service.VIBRATOR_SERVICE);
         SDKInitializer.initialize(getApplicationContext());
 
     }
