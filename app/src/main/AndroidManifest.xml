@@ -44,15 +44,21 @@
 
         <!--高德地图开发者key-->
         <!--<meta-data-->
-            <!--android:name="com.amap.api.v2.apikey"-->
-            <!--android:value="a681c5f5c043a7d974a3a51fcde6c5a8" />-->
+        <!--android:name="com.amap.api.v2.apikey"-->
+        <!--android:value="a681c5f5c043a7d974a3a51fcde6c5a8" />-->
 
         <!--百度地图开发者key-->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="9dPvPlswupxyS2gshyy2BYYScnxYQU9N" />
 
+        <activity android:name=".client.view.ui.ContentActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <!--<activity android:name=".client.test.IndoorLocationActivity" />-->
         <!--<activity android:name=".client.test.LocationActivity" />-->
         <!--<activity android:name=".client.test.LocationAutoNotify" />-->
@@ -60,15 +66,15 @@
         <!--<activity android:name=".client.test.NotifyActivity" />-->
         <!--<activity android:name=".client.test.QuestActivity" />-->
         <!--<activity android:name=".client.test.LocationOption" />-->
-        <service android:name="com.amap.api.location.APSService" />
-        <!--<service-->
-            <!--android:name="com.baidu.location.f"-->
-            <!--android:enabled="true"-->
-            <!--android:process=":remote">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="com.baidu.location.service_v2.2"/>-->
-            <!--</intent-filter>-->
-        <!--</service>-->
+        <!--<service android:name="com.amap.api.location.APSService" />-->
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote">
+            <intent-filter>
+                <action android:name="com.baidu.location.service_v2.2" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

@@ -20,6 +20,12 @@
             app:theme="@style/ToolbarTheme">
 
             <TextView
+                android:id="@+id/coordinate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                tools:text="100,200"/>
+            <TextView
                 android:id="@+id/tv_tool_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -83,15 +89,21 @@
             android:textSize="13sp"
             android:gravity="center"
             android:text="采点"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/aim_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
         <ImageView
             android:id="@+id/iv_aim_target"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_centerInParent="true"
             android:src="@mipmap/iv_target"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            />
     </RelativeLayout>
-
     <LinearLayout
         android:layout_width="80dp"
         android:layout_height="match_parent"
@@ -100,5 +112,4 @@
 
         <include layout="@layout/layout_slide_menu" />
     </LinearLayout>
-
 </android.support.v4.widget.DrawerLayout>

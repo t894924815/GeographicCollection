@@ -16,17 +16,13 @@ public class UIPresenter {
     private IUiOperator iUiOperator;
     private int currentX;
     private int currentY;
-    public CollectionFragment collectionFragment;
-    public MessageFragment messageFragment;
 
     public UIPresenter(IUiOperator iUiOperator) {
         this.iUiOperator = iUiOperator;
-        collectionFragment = new CollectionFragment();
-        messageFragment = new MessageFragment();
     }
 
     public void moveView(View view, MotionEvent motionEvent) {
-        if (view.getId() == R.id.iv_aim_target && motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
+        if (view.getId() == R.id.iv_aim_target && motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
             currentX = (int) motionEvent.getRawX();
             currentY = (int) motionEvent.getRawY();
         } else if (view.getId() == R.id.iv_aim_target && motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
@@ -38,18 +34,14 @@ public class UIPresenter {
         }
     }
 
-    public void showFragment(WitchFragment witch) {
-        if(witch == WitchFragment.COLLECTION){
-            if(!collectionFragment.isAdded()){
-                iUiOperator.addFragment(collectionFragment);
-            }else {
-                iUiOperator.showFragment(collectionFragment);
-            }
-        }
-    }
+//    public void showFragment(WitchFragment witch) {
+//        if(witch == WitchFragment.COLLECTION){
+//            if(!collectionFragment.isAdded()){
+//                iUiOperator.addFragment(collectionFragment);
+//            }else {
+//                iUiOperator.showFragment(collectionFragment);
+//            }
+//        }
+//    }
 
-    public void startPoint() {
-        collectionFragment.collect.setVisibility(View.GONE);
-        collectionFragment.aimTarget.setVisibility(View.VISIBLE);
-    }
 }

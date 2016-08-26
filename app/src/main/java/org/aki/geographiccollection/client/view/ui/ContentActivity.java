@@ -17,7 +17,6 @@ import org.aki.geographiccollection.R;
 import org.aki.geographiccollection.client.bean.WitchFragment;
 import org.aki.geographiccollection.client.presenter.MainPresenter;
 import org.aki.geographiccollection.client.presenter.MapPresenter;
-import org.aki.geographiccollection.client.presenter.UIPresenter;
 import org.aki.geographiccollection.client.view.IMapOperator;
 import org.aki.geographiccollection.client.view.IUiOperator;
 import org.aki.geographiccollection.client.view.ui.fragment.CollectionFragment;
@@ -31,28 +30,33 @@ public class ContentActivity extends BaseActivity implements IUiOperator, IMapOp
     private FragmentManager fragmentManager;
 
     private MainPresenter mainPresenter;
-    private UIPresenter uiPresenter;
+//    private UIPresenter uiPresenter;
     private MapPresenter mapContentPresenter;
+    public CollectionFragment collectionFragment;
+    public MessageFragment messageFragment;
 
     @Override
     public void onContentChanged() {
         super.onContentChanged();
-        initData();
     }
 
     private void initData() {
-        mainPresenter = new MainPresenter(this);
-        uiPresenter = new UIPresenter(this);
-        mapContentPresenter = new MapPresenter(this);
+//        mainPresenter = new MainPresenter(this);
+//        uiPresenter = new UIPresenter(this);
+//        mapContentPresenter = new MapPresenter(this);
+
+        collectionFragment = new CollectionFragment();
+        messageFragment = new MessageFragment();
 
         fragmentManager = getSupportFragmentManager();
-        uiPresenter.showFragment(WitchFragment.COLLECTION);
+        fragmentManager.beginTransaction().add(android.R.id.content,collectionFragment).commitAllowingStateLoss();
+//        uiPresenter.showFragment(WitchFragment.COLLECTION);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        initData();
     }
 
     @Override
@@ -65,34 +69,34 @@ public class ContentActivity extends BaseActivity implements IUiOperator, IMapOp
         super.onDestroy();
     }
 
+//    public View.OnClickListener onClickListener = new View.OnClickListener() {
+//        @Override
+//        public void onClick(View view) {
+//            switch (view.getId()) {
+//                case R.id.tv_collect:
+//                    uiPresenter.startPoint();
+//                    break;
+//            }
+//        }
+//    };
+//
 
-    public View.OnClickListener onClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            switch (view.getId()) {
-                case R.id.tv_collect:
-                    uiPresenter.startPoint();
-                    break;
-            }
-        }
-    };
-
-    public View.OnTouchListener onTouchListener = new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            switch (motionEvent.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    uiPresenter.moveView(view, motionEvent);
-                    break;
-                case MotionEvent.ACTION_MOVE:
-                    uiPresenter.moveView(view, motionEvent);
-                    break;
-                case MotionEvent.ACTION_UP:
-                    break;
-            }
-            return false;
-        }
-    };
+//    public View.OnTouchListener onTouchListener = new View.OnTouchListener() {
+//        @Override
+//        public boolean onTouch(View view, MotionEvent motionEvent) {
+//            switch (motionEvent.getAction()) {
+//                case MotionEvent.ACTION_DOWN:
+//                    uiPresenter.moveView(view, motionEvent);
+//                    break;
+//                case MotionEvent.ACTION_MOVE:
+//                    uiPresenter.moveView(view, motionEvent);
+//                    break;
+//                case MotionEvent.ACTION_UP:
+//                    break;
+//            }
+//            return false;
+//        }
+//    };
 
     @Override
     public void showMapType() {
