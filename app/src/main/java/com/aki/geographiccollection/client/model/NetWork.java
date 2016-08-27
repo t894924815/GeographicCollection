@@ -5,6 +5,8 @@ import android.support.v4.util.ArrayMap;
 import com.aki.geographiccollection.client.bean.ServerData;
 
 import com.aki.geographiccollection.client.GeoApplication;
+
+import rx.functions.Action1;
 //import org.aki.geographiccollection.client.utils.HttpUtils;
 
 
@@ -55,4 +57,11 @@ public class NetWork implements INetWork {
 //        });
         return null;
     }
+
+    @Override
+    public void uploadPhoto(final Action1<ArrayMap<String, String>> ac, byte[] bytes, final String filename, boolean issmall) {
+//        params.put("upload");
+    }
+
+
 }

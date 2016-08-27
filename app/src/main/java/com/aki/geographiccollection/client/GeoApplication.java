@@ -5,6 +5,7 @@ import android.app.Application;
 import android.os.Bundle;
 import android.support.v4.util.ArrayMap;
 import com.baidu.mapapi.SDKInitializer;
+import com.facebook.drawee.backends.pipeline.Fresco;
 
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class GeoApplication extends Application implements Application.ActivityL
         super.onCreate();
         application = this;
         params = new ArrayMap<>();
-
+        Fresco.initialize(getApplicationContext());
         SDKInitializer.initialize(getApplicationContext());
 
     }
