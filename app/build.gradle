@@ -36,6 +36,7 @@ android {
         }
     }
 }
+apply plugin: 'com.neenbedankt.android-apt'
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -47,6 +48,8 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.0.1'
     compile 'jp.wasabeef:recyclerview-animators:2.2.1'
     compile 'fr.avianey.com.viewpagerindicator:library:2.4.1.1@aar'
+    compile 'com.jakewharton:butterknife:8.0.1'
+    apt 'com.jakewharton:butterknife-compiler:8.0.1'
 //    compile 'com.viewpagerindicator:library:2.4.1@aar'
     compile files('libs/AMap2DMap_2.9.0_AMapSearch_3.4.0_AMapLocation_2.8.0_20160811.jar')
 }

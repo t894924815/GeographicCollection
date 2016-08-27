@@ -36,5 +36,6 @@
         </string>
     <string name="qa_callback_mail">反馈邮箱:loc-bugs@baidu.com</string>
     <string name="confirm">确定退出?</string>
+    <string name="accept">确定</string>
 
 </resources>
