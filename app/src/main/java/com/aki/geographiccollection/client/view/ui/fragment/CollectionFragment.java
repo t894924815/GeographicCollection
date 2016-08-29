@@ -282,6 +282,25 @@ public class CollectionFragment extends Fragment implements IUiOperator {
 //将marker添加到地图上
 //        marker = (Marker) (mBaiduMap.addOverlay(options));
     }
+    @OnClick({R.id.coordinate, R.id.tv_tool_title, R.id.iv_refresh, R.id.toolbar, R.id.main_map, R.id.tv_collect, R.id.iv_aim_target, R.id.tv_confirm})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_refresh:
+                Animation operatingAnim = AnimationUtils.loadAnimation(GeoApplication.application, R.anim.rorate);
+                LinearInterpolator lin = new LinearInterpolator();
+                operatingAnim.setInterpolator(lin);
+                refresh.startAnimation(operatingAnim);
+                refreshMap();
+                break;
+            case R.id.tv_collect:
+                startCollect();
+                break;
+            case R.id.tv_confirm:
+                isGet = true;
+                getPosition(aimTarget.getLeft() + aimTarget.getWidth() / 2.0f, aimTarget.getTop() + aimTarget.getHeight() / 2.0f - toolbar.getHeight());
+                break;
+        }
+    }
 
 
     @Override
@@ -344,23 +363,4 @@ public class CollectionFragment extends Fragment implements IUiOperator {
         UIUtils.getInstance().simulateClick(mMapView, x, y);
     }
 
-    @OnClick({R.id.coordinate, R.id.tv_tool_title, R.id.iv_refresh, R.id.toolbar, R.id.main_map, R.id.tv_collect, R.id.iv_aim_target, R.id.tv_confirm})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.iv_refresh:
-                Animation operatingAnim = AnimationUtils.loadAnimation(GeoApplication.application, R.anim.rorate);
-                LinearInterpolator lin = new LinearInterpolator();
-                operatingAnim.setInterpolator(lin);
-                refresh.startAnimation(operatingAnim);
-                refreshMap();
-                break;
-            case R.id.tv_collect:
-                startCollect();
-                break;
-            case R.id.tv_confirm:
-                isGet = true;
-                getPosition(aimTarget.getLeft() + aimTarget.getWidth() / 2.0f, aimTarget.getTop() + aimTarget.getHeight() / 2.0f - toolbar.getHeight());
-                break;
-        }
-    }
 }
