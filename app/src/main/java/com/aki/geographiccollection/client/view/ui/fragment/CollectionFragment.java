@@ -121,10 +121,7 @@ public class CollectionFragment extends Fragment implements IUiOperator {
     }
 
     private void initView() {
-//        collect.setOnClickListener(onClickListener);
         aimTarget.setOnTouchListener(onTouchListener);
-//        refresh.setOnClickListener(onClickListener);
-//        confirm.setOnClickListener(onClickListener);
 
         coordinate.setText(String.valueOf(DisplayUtil.getScreanWidth() / 2) + "," + String.valueOf(DisplayUtil.getScreanHeight() / 2));
 
@@ -211,28 +208,6 @@ public class CollectionFragment extends Fragment implements IUiOperator {
         mBaiduMap.addOverlay(option);
     }
 
-    private boolean isGet = false;
-    //    private View.OnClickListener onClickListener = new View.OnClickListener() {
-//        @Override
-//        public void onClick(View v) {
-//            switch (v.getId()) {
-//                case R.id.iv_refresh:
-//                    Animation operatingAnim = AnimationUtils.loadAnimation(GeoApplication.application, R.anim.rorate);
-//                    LinearInterpolator lin = new LinearInterpolator();
-//                    operatingAnim.setInterpolator(lin);
-//                    refresh.startAnimation(operatingAnim);
-//                    refreshMap();
-//                    break;
-//                case R.id.tv_collect:
-//                    startCollect();
-//                    break;
-//                case R.id.tv_confirm:
-//                    isGet = true;
-//                    getPosition(aimTarget.getLeft() + aimTarget.getWidth() / 2.0f, aimTarget.getTop() + aimTarget.getHeight() / 2.0f - toolbar.getHeight());
-//                    break;
-//            }
-//        }
-//    };
     public View.OnTouchListener onTouchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -282,6 +257,8 @@ public class CollectionFragment extends Fragment implements IUiOperator {
 //将marker添加到地图上
 //        marker = (Marker) (mBaiduMap.addOverlay(options));
     }
+
+    private boolean isGet = false;
     @OnClick({R.id.coordinate, R.id.tv_tool_title, R.id.iv_refresh, R.id.toolbar, R.id.main_map, R.id.tv_collect, R.id.iv_aim_target, R.id.tv_confirm})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -297,7 +274,8 @@ public class CollectionFragment extends Fragment implements IUiOperator {
                 break;
             case R.id.tv_confirm:
                 isGet = true;
-                getPosition(aimTarget.getLeft() + aimTarget.getWidth() / 2.0f, aimTarget.getTop() + aimTarget.getHeight() / 2.0f - toolbar.getHeight());
+                getPosition(aimTarget.getLeft() + aimTarget.getWidth() / 2.0f,
+                        aimTarget.getTop() + aimTarget.getHeight() / 2.0f - toolbar.getHeight());
                 break;
         }
     }
