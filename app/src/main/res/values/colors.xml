@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="grey_linear_bg">#FFDEDFE0</color>
     <color name="grgray">#686868</color>
     <color name="blue_text_bg">#ff03A9F4</color>
     <color name="blue_main_bg">#FF2196F3</color>

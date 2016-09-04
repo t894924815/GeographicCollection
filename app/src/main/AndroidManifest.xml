@@ -51,14 +51,15 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="9dPvPlswupxyS2gshyy2BYYScnxYQU9N" />
-
-        <activity android:name="com.aki.geographiccollection.client.view.ui.ContentActivity">
+        <activity android:name="com.aki.geographiccollection.client.view.ui.LoginMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name="com.aki.geographiccollection.client.view.ui.ContentActivity"/>
         <!--<activity android:name=".client.test.IndoorLocationActivity" />-->
         <!--<activity android:name=".client.test.LocationActivity" />-->
         <!--<activity android:name=".client.test.LocationAutoNotify" />-->

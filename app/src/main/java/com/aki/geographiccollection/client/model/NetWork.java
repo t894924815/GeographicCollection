@@ -5,6 +5,8 @@ import android.support.v4.util.ArrayMap;
 import com.aki.geographiccollection.client.bean.ServerData;
 
 import com.aki.geographiccollection.client.GeoApplication;
+import com.aki.geographiccollection.client.utils.DBUtil;
+import com.litesuits.orm.LiteOrm;
 
 import rx.functions.Action1;
 //import org.aki.geographiccollection.client.utils.HttpUtils;
@@ -17,9 +19,12 @@ public class NetWork implements INetWork {
 
 
     private final ArrayMap<String, String> params;
+    private LiteOrm liteOrm;
 
     public NetWork() {
         params = GeoApplication.params;
+        liteOrm = DBUtil.getDbUtil();
+
     }
 
     @Override
@@ -27,6 +32,8 @@ public class NetWork implements INetWork {
         params.put("methodName", "userLogin");
         params.put("username", userName);
         params.put("password", password);
+
+
 //        HttpUtils.http(params, new Action1<JSONObject>() {
 //            @Override
 //            public void call(JSONObject jsonObject) {

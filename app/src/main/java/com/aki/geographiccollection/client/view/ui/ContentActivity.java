@@ -1,36 +1,23 @@
 package com.aki.geographiccollection.client.view.ui;
 
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.text.TextUtils;
 
-import com.baidu.mapapi.map.MapView;
-import com.baidu.mapapi.map.Overlay;
-import com.baidu.mapapi.model.LatLng;
-
-import com.aki.geographiccollection.client.presenter.MainPresenter;
-import com.aki.geographiccollection.client.presenter.MapPresenter;
-import com.aki.geographiccollection.client.view.IMapOperator;
+import com.aki.geographiccollection.client.utils.SpUtil;
 import com.aki.geographiccollection.client.view.IUiOperator;
 import com.aki.geographiccollection.client.view.ui.fragment.CollectionFragment;
 import com.aki.geographiccollection.client.view.ui.fragment.MessageFragment;
 
-import org.aki.geographiccollection.R;
-
-import butterknife.ButterKnife;
-
 /**
  * Created by aki on 2016/8/25.
  */
-public class ContentActivity extends BaseActivity implements IUiOperator, IMapOperator {
+public class ContentActivity extends BaseActivity implements IUiOperator {
 
     private FragmentManager fragmentManager;
 
-    private MainPresenter mainPresenter;
-//    private UIPresenter uiPresenter;
-    private MapPresenter mapContentPresenter;
     public CollectionFragment collectionFragment;
     public MessageFragment messageFragment;
 
@@ -48,13 +35,16 @@ public class ContentActivity extends BaseActivity implements IUiOperator, IMapOp
         messageFragment = new MessageFragment();
 
         fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().add(android.R.id.content,collectionFragment).commitAllowingStateLoss();
+        fragmentManager.beginTransaction().add(android.R.id.content, collectionFragment).commitAllowingStateLoss();
 //        uiPresenter.showFragment(WitchFragment.COLLECTION);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (!TextUtils.isEmpty(SpUtil.getInstance().get("userName"))) {
+            SpUtil.getInstance().put("isLogin", "true");
+        }
         initData();
     }
 
@@ -148,18 +138,4 @@ public class ContentActivity extends BaseActivity implements IUiOperator, IMapOp
 
     }
 
-    @Override
-    public void changePointColor(Drawable drawable, Overlay overlay) {
-
-    }
-
-    @Override
-    public void addOverLayPoint(LatLng latLng, MapView mapView) {
-
-    }
-
-    @Override
-    public void removeOverLayPoint(LatLng latLng, MapView mapView) {
-
-    }
 }
